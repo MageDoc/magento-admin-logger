@@ -61,7 +61,7 @@ class Strategery_Logger_Model_Observer_Cms extends Strategery_Logger_Model_Obser
 
     protected function _getContext($observer, $action)
     {
-        $type   =   OBJECT_TYPE_CMS;    
+        $type   =   Strategery_Logger_Model_Observer::OBJECT_TYPE_CMS;
         return $this->_createContext($observer->getEvent()->getDataObject(), $action, $type, $observer->getData());        
     }
 

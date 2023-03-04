@@ -79,7 +79,7 @@
             </logger>
         </helpers>        
         <resources>
-            <logger_setup>
+            <strategery_logger_setup>
                 <setup>
                     <module>Strategery_Logger</module>
                     <class>Mage_Catalog_Model_Resource_Setup</class>
@@ -87,7 +87,7 @@
                 <connection>
                     <use>core_setup</use>
                 </connection>
-            </logger_setup>           
+            </strategery_logger_setup>
         </resources>
         <events>
             <controller_action_postdispatch_adminhtml>

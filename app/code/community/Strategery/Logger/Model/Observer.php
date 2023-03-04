@@ -76,7 +76,7 @@ class Strategery_Logger_Model_Observer {
 
     protected function _getContext($observer, $action)
     {
-        $type   =   OBJECT_TYPE_INFO;    
+        $type   =   self::OBJECT_TYPE_INFO;
         return $this->_createContext($observer->getEvent()->getData(), $action, $type, $observer->getData());        
     }
 

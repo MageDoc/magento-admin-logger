@@ -9,6 +9,14 @@ class Strategery_Logger_Varien_Data_Form_Element_Serial extends Varien_Data_Form
 
     public function getElementHtml()
     {
+        $matches = array();
+        preg_match_all(
+            '/"(([a-z]+_)+[a-z]+Controller)"/i',
+            $this->_getObject(),
+            $matches
+        );
+        $controllerClasses = $matches[1];
+        print_r($controllerClasses);die;
         $object = print_r(unserialize($this->_getObject()));
 
         return "<pre>$object</pre>";

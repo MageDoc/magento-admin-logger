@@ -58,7 +58,7 @@ class Strategery_Logger_Model_Observer_Product extends Strategery_Logger_Model_O
 
     protected function _getContext($observer, $action)
     {
-        $type   =   OBJECT_TYPE_PRODUCT;    
+        $type   =   Strategery_Logger_Model_Observer::OBJECT_TYPE_PRODUCT;
         return $this->_createContext($observer->getProduct()->getData(), $action, $type, $observer->getData());        
     }
 
