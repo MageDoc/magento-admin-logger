@@ -16,8 +16,15 @@ class Strategery_Logger_Varien_Data_Form_Element_Serial extends Varien_Data_Form
             $matches
         );
         $controllerClasses = $matches[1];
-        print_r($controllerClasses);die;
-        $object = print_r(unserialize($this->_getObject()));
+        foreach ($controllerClasses as $controllerClass) {
+            $controllerClass = explode('_', $controllerClass);
+            $module = array_shift($controllerClass).'_'.array_shift($controllerClass);
+            $filename = array_pop($controllerClass).'.php';
+            $path = Mage::getModuleDir('controllers', $module).DS.implode(DS, $controllerClass).DS.$filename;
+            require_once $path;
+        }
+        //print_r($controllerClasses);die;
+        $object = print_r(unserialize($this->_getObject()), true);
 
         return "<pre>$object</pre>";
 

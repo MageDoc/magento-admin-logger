@@ -77,12 +77,29 @@ class Strategery_Logger_Model_Observer {
     protected function _getContext($observer, $action)
     {
         $type   =   self::OBJECT_TYPE_INFO;
-        return $this->_createContext($observer->getEvent()->getData(), $action, $type, $observer->getData());        
+        $eventData = $this->collapseObject($observer->getEvent()->getData());
+        $observerData = $this->collapseObject($observer->getData());
+        return $this->_createContext($eventData, $action, $type, $observerData);
+    }
+
+    public function collapseObject($object)
+    {
+        $data = array();
+        foreach ($object as $key => $value) {
+            if (!is_object($value)) {
+                if (is_array($value)) {
+                    $data[$key] = $this->collapseObject($value);
+                } else {
+                    $data[$key] = $value;
+                }
+            }
+        }
+        return $data;
     }
 
 
     protected function _createContext($data, $action, $type, $observer)
-    {  
+    {
         return $context = array(
                 "object" => $data,
                 "action" => $action,
